@@ -58,6 +58,3 @@ A comprehensive security monitoring solution designed specifically for IoT netwo
 
 This IoT Security Monitoring System represents a robust solution for organizations seeking to enhance their IoT infrastructure's security posture. By combining real-time monitoring, advanced analytics, and automated threat detection, it provides comprehensive protection for connected devices in today's increasingly complex threat landscape. We are committed to continuous improvement and welcome contributions from the security community to help make IoT ecosystems safer for everyone .
 
-- Modern web browser
-- Network access to IoT devices
-- Minimum 2GB RAM (4GB recommended)
