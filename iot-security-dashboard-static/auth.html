@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Authentication - IoT Security Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(1200px 600px at -10% -20%, rgba(34, 211, 238, 0.18) 0%, rgba(34, 211, 238, 0) 55%),
+        radial-gradient(900px 500px at 110% 120%, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 1) 60%),
+        #020617;
+      padding: 20px;
+    }
+    
+    .auth-card {
+      background: radial-gradient(1200px 600px at -10% -20%, rgba(34, 211, 238, 0.10) 0%, rgba(34, 211, 238, 0) 60%),
+                  linear-gradient(135deg, #081726 0%, #0e2236 100%);
+      border: 1px solid rgba(34, 211, 238, 0.55);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 18px 30px rgba(6, 15, 24, 0.85);
+    }
+    
+    .auth-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .auth-header h1 {
+      font-size: 28px;
+      margin: 0 0 8px 0;
+      background: linear-gradient(90deg, #22d3ee, #4cc9f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .auth-header p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+    }
+    
+    .form-group input {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    
+    .form-group input:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.35);
+    }
+    
+    .form-group input::placeholder {
+      color: var(--muted);
+    }
+    
+    .password-requirements {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding: 12px;
+      background: var(--card);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    
+    .password-requirements ul {
+      margin: 4px 0 0 0;
+      padding-left: 20px;
+    }
+    
+    .password-requirements li {
+      margin: 2px 0;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #22d3ee, #4cc9f0);
+      color: #04111b;
+      border: 1px solid rgba(34, 211, 238, 0.7);
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 14px 30px rgba(6, 15, 24, 0.85);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4cc9f0, #22d3ee);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(6, 15, 24, 0.95);
+    }
+    
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .toggle-form {
+      text-align: center;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .toggle-form button {
+      background: none;
+      border: none;
+      color: #22d3ee;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+      font-size: 14px;
+    }
+    
+    .toggle-form button:hover {
+      color: #4cc9f0;
+    }
+    
+    .message {
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .message.success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--ok);
+      color: var(--ok);
+    }
+    
+    .message.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+    }
+    
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .back-link a {
+      color: #22d3ee;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+    
+    .form-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>🛡️ IoT Security</h1>
+        <p id="auth-subtitle">Secure your IoT devices</p>
+      </div>
+      
+      <div id="message" class="message"></div>
+      
+      <!-- Sign In Form -->
+      <form id="signin-form" class="auth-form">
+        <div class="form-group">
+          <label for="signin-email">Email</label>
+          <input 
+            type="email" 
+            id="signin-email" 
+            name="email" 
+            placeholder="you@example.com" 
+            required 
+            autocomplete="email"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="signin-password">Password</label>
+          <input 
+            type="password" 
+            id="signin-password" 
+            name="password" 
+            placeholder="Enter your password" 
+            required 
+            autocomplete="current-password"
+          />
+        </div>
+        
+        <button type="submit" class="btn-primary" id="signin-btn">
+          Sign In
+        </button>
+        
+        <div class="toggle-form">
+          Don't have an account? 
+          <button type="button" id="show-signup">Sign Up</button>
+        </div>
+      </form>
+      
+      <!-- Sign Up Form -->
+      <form id="signup-form" class="auth-form form-hidden">
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input 
+            type="text" 
+            id="signup-username" 
+            name="username" 
+            placeholder="Choose a username" 
+            required 
+            autocomplete="username"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input 
+            type="email" 
+            id="signup-email" 
+            name="email" 
+            placeholder="you@example.com" 
+            required 
+            autocomplete="email"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input 
+            type="password" 
+            id="signup-password" 
+            name="password" 
+            placeholder="Create a strong password" 
+            required 
+            autocomplete="new-password"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="signup-confirm-password">Confirm Password</label>
+          <input 
+            type="password" 
+            id="signup-confirm-password" 
+            name="confirm_password" 
+            placeholder="Re-enter your password" 
+            required 
+            autocomplete="new-password"
+          />
+        </div>
+        
+        <div class="password-requirements">
+          <strong>Password Requirements:</strong>
+          <ul>
+            <li>At least 8 characters long</li>
+            <li>Contains letters (a-z, A-Z)</li>
+            <li>Contains numbers (0-9)</li>
+            <li>Contains special characters (!@#$%^&*...)</li>
+          </ul>
+        </div>
+        
+        <button type="submit" class="btn-primary" id="signup-btn">
+          Sign Up
+        </button>
+        
+        <div class="toggle-form">
+          Already have an account? 
+          <button type="button" id="show-signin">Sign In</button>
+        </div>
+      </form>
+      
+      <div class="back-link">
+        <a href="index.html">← Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="auth.js"></script>
+</body>
+</html>
