@@ -1,0 +1,3 @@
+{"timestamp": "2025-12-07T06:43:29.751010Z", "event_type": "rollback_blocked", "details": {"device_id": "device_001", "current_version": "2.5.1", "attempted_version": "2.5.0"}}
+{"timestamp": "2025-12-07T07:21:53.110880Z", "event_type": "rollback_blocked", "details": {"device_id": "device_001", "current_version": "2.5.5", "attempted_version": "2.5.1"}}
+{"timestamp": "2025-12-07T07:21:59.207893Z", "event_type": "rollback_blocked", "details": {"device_id": "device_001", "current_version": "2.5.5", "attempted_version": "2.5.2"}}
