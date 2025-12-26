@@ -1,25 +1,63 @@
-# iot-security-framework
+# IoT Security Monitoring System
 
-## Introduction
-The IoT Security Monitoring System is a robust security solution designed to protect IoT ecosystems through comprehensive monitoring and threat detection. It provides real-time security management for IoT networks, helping to safeguard devices and data from potential cyber threats.
-## Core Security Services
-### 1. Network Security
-- **Traffic Monitoring**: Real-time analysis of network traffic
-- **Intrusion Detection**: Identification of potential security breaches
-- **Protocol Analysis**: Support for IoT protocols (MQTT, CoAP, HTTP)
-- **Threat Detection**: Continuous scanning for security threats
-### 2. Access Control
-- **Authentication**: Secure user verification
-- **Authorization**: Role-based access management
-- **Session Control**: Active session monitoring
-- **Audit Logging**: Comprehensive activity tracking
-### 3. Device Security
-- **Device Discovery**: Automatic network device detection
-- **Vulnerability Scanning**: Regular security assessments
-- **Firmware Analysis**: Security evaluation of device firmware
-- **Configuration Management**: Secure device setup and maintenance
-### 4. Alert System
-- **Real-time Notifications**: Immediate security alerts
-- **Custom Alerts**: Configurable alert thresholds
-- **Multi-channel Alerts**: Email and in-app notifications
-- **Incident Tracking**: Security event monitoring
+## 🌟 Overview
+
+A comprehensive security monitoring solution designed specifically for IoT networks, providing real-time threat detection and prevention across connected devices. This system offers multi-layered protection to secure your IoT infrastructure against emerging threats.
+
+## Core Services
+
+###  Interactive Dashboard
+- Real-time device status monitoring
+- Network traffic visualization
+- Instant security alerts and notifications
+- Device management interface
+
+###  Network Traffic Analysis using suricata rules
+- Continuous monitoring of data flows
+- Traffic pattern recognition
+
+###  Firmware Security
+- Integrity verification of device firmware
+- Version control and update management
+- Vulnerability scanning
+- Change detection and alerts
+
+###  Device Behavior Monitoring
+- Baseline behavior establishment
+- Real-time anomaly detection
+- Suspicious activity logging
+
+###  Security Scanning
+- Automated vulnerability assessment
+- Port scanning
+- Service identification
+
+###  User Authentication & Access Control
+- Secure login system
+- Role-based access control
+- Session management
+
+##  Key Features
+
+- **Real-time Monitoring**: Instant visibility into your IoT network
+- **Threat Detection**: Advanced algorithms to identify potential security risks
+- **Comprehensive Reporting**: Detailed security reports and analytics
+- **Scalable Architecture**: Designed to handle networks of all sizes
+- **User-friendly Interface**: Intuitive dashboard for easy management
+
+##  Technical Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Backend**: Python (Flask)
+- **Database**: SQLite (with SQLAlchemy ORM)
+- **Security**: JWT Authentication, HTTPS
+- **Visualization**: Chart.js for data representation
+
+
+##  Conclusion
+
+This IoT Security Monitoring System represents a robust solution for organizations seeking to enhance their IoT infrastructure's security posture. By combining real-time monitoring, advanced analytics, and automated threat detection, it provides comprehensive protection for connected devices in today's increasingly complex threat landscape. We are committed to continuous improvement and welcome contributions from the security community to help make IoT ecosystems safer for everyone .
+
+- Modern web browser
+- Network access to IoT devices
+- Minimum 2GB RAM (4GB recommended)
